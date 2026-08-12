@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Consola DOE</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        h2 {
+            color: #3b82f6;
+            margin-top: 30px;
+        }
+        .step-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #0f172a;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .btn-fake {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .btn-fake-green {
+            background: #16a34a;
+        }
+        .btn-fake-red {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manual Rápido: Consola DOE</h1>
+        <p>Bienvenido a la <strong>Consola DOE (Dirección de Operaciones y Enfermería)</strong> de Mundo Salud Médica. Esta herramienta está diseñada para auditar, revisar y aprobar los cuadros de turnos enviados por las diferentes Unidades Operativas.</p>
+
+        <h2>🚀 ¿Cómo empezar a usar la herramienta?</h2>
+        <div class="step-box">
+            <p><span class="highlight">Paso 1: Abrir la aplicación</span><br>
+            No necesitas instalar nada. Simplemente haz doble clic en el archivo llamado <strong>Consola_DOE.html</strong> y se abrirá automáticamente en tu navegador web (Google Chrome, Edge, Safari, etc.).</p>
+        </div>
+
+        <div class="step-box">
+            <p><span class="highlight">Paso 2: Configurar los datos básicos</span><br>
+            En la parte superior de la pantalla, selecciona el <strong>Año</strong>, el <strong>Mes</strong> a evaluar, y escribe el nombre del <strong>Evaluador DOE</strong> (tu nombre) y del responsable de turnos de la unidad.</p>
+        </div>
+
+        <div class="step-box">
+            <p><span class="highlight">Paso 3: Cargar el Excel de la Unidad Operativa</span><br>
+            Haz clic en el botón <span class="btn-fake">📥 Importar Excel</span> y selecciona el archivo Excel que envió la Unidad Operativa. La herramienta leerá automáticamente todas las hojas y servicios, organizándolos en el menú izquierdo.</p>
+        </div>
+
+        <h2>🕵️ Auditoría y Evaluación</h2>
+        <p>Una vez cargado el archivo, navega por los diferentes servicios en el menú izquierdo. Para cada servicio deberás:</p>
+        <ul>
+            <li><strong>Revisar las Horas:</strong> La herramienta calcula automáticamente las horas totales de cada colaborador basado en sus turnos.</li>
+            <li><strong>Ajustar Convenciones (✏️):</strong> En la esquina inferior izquierda, verás las convenciones detectadas (D1, N, L, etc.). Si los colores no te gustan o necesitas ajustar las horas de un turno especial, haz clic en el botón del lápiz (✏️) para editarlas.</li>
+            <li><strong>Aprobar o Rechazar:</strong> 
+                <ul>
+                    <li>Si el servicio está correcto, haz clic en <span class="btn-fake btn-fake-green">✔️ Aprobar Servicio</span>.</li>
+                    <li>Si detectas un error grave, haz clic en <span class="btn-fake btn-fake-red">❌ Rechazar Servicio</span>. El sistema te pedirá que escribas una <strong>Observación o Acción Correctiva</strong> para que la Unidad Operativa sepa qué corregir.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>💾 Guardar Progreso y Exportar</h2>
+        <ul>
+            <li><strong>Guardar Progreso:</strong> Si no terminas de auditar todos los servicios hoy, haz clic en <span class="btn-fake">💾 Guardar</span>. La próxima vez que abras la herramienta, haz clic en <span class="btn-fake">📂 Cargar Progreso</span> y continuarás desde donde lo dejaste.</li>
+            <li><strong>Exportar Resultados:</strong> Cuando termines de evaluar, haz clic en el botón azul <span class="btn-fake">📊 Exportar Aprobados</span> en la esquina superior derecha. 
+                <br><br>
+                <em>¿Qué sucederá?</em> La herramienta generará y descargará automáticamente un nuevo archivo Excel consolidado y estandarizado con el formato oficial. Este archivo incluirá:
+                <ul>
+                    <li>Únicamente las pestañas de los servicios <strong>Aprobados</strong>, con formato visual impecable.</li>
+                    <li>Firmas automáticas con tu nombre como Evaluador DOE.</li>
+                    <li>Una pestaña especial llamada <strong>"RECHAZOS_Y_OBSERVACIONES"</strong> detallando a la Unidad Operativa los servicios que no fueron aprobados y tus comentarios de corrección.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 40px; color: #64748b; font-size: 0.9em;">
+            <p>Herramienta desarrollada para optimización de procesos.<br>Mundo Salud Médica © 2026</p>
+        </div>
+    </div>
+</body>
+</html>

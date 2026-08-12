@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación de Turnos - Mundo Salud Médica</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SheetJS with Styling Support -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="glass-panel">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-icon">M</div>
+                    <h1>Mundo Salud Médica <span>Programación de Turnos</span></h1>
+                </div>
+                <div class="header-actions">
+                    <button id="btn-save-local" class="btn btn-secondary" title="Guardar Progreso"><i class="icon">💾</i> Guardar</button>
+                    <button id="btn-load-json" class="btn btn-secondary" title="Cargar JSON"><i class="icon">📂</i> Cargar Progreso</button>
+                    <button id="btn-load-excel" class="btn btn-secondary" title="Cargar Excel para Verificar"><i class="icon">🔍</i> Importar Excel</button>
+                    <button id="btn-export-excel" class="btn btn-primary" title="Exportar a Excel"><i class="icon">📊</i> Exportar Excel</button>
+                    <!-- Hidden file inputs -->
+                    <input type="file" id="file-input-json" accept=".json" style="display: none;" />
+                    <input type="file" id="file-input-excel" accept=".xlsx, .xls" style="display: none;" />
+                </div>
+            </div>
+            
+            <div class="header-controls">
+                <div class="control-group">
+                    <label for="select-year">Año</label>
+                    <select id="select-year"></select>
+                </div>
+                <div class="control-group">
+                    <label for="select-month">Mes</label>
+                    <select id="select-month">
+                        <option value="0">Enero</option>
+                        <option value="1">Febrero</option>
+                        <option value="2">Marzo</option>
+                        <option value="3">Abril</option>
+                        <option value="4">Mayo</option>
+                        <option value="5">Junio</option>
+                        <option value="6">Julio</option>
+                        <option value="7">Agosto</option>
+                        <option value="8">Septiembre</option>
+                        <option value="9">Octubre</option>
+                        <option value="10">Noviembre</option>
+                        <option value="11">Diciembre</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="input-unidad">Unidad Operativa</label>
+                    <input type="text" id="input-unidad" placeholder="Ej. SOCIEDAD MEDICA CLINICA ALCALA">
+                </div>
+                <div class="control-group">
+                    <label for="input-responsable">Responsable del cargue</label>
+                    <input type="text" id="input-responsable" placeholder="Nombre completo">
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- SIDEBAR: Departments -->
+            <aside class="sidebar glass-panel">
+                <div class="sidebar-header">
+                    <h2>Áreas / Servicios</h2>
+                    <button id="btn-add-dept" class="btn-icon" title="Agregar Área">+</button>
+                </div>
+                <ul id="dept-list" class="dept-list">
+                    <!-- Departments will be rendered here -->
+                </ul>
+            </aside>
+
+            <!-- MAIN GRID AREA -->
+            <main class="grid-container glass-panel">
+                <div class="grid-header-actions">
+                    <h2 id="current-dept-title">Seleccione un Área</h2>
+                    <div class="grid-toolbar">
+                        <span class="info-badge" id="info-total-hours">Horas del Mes: --</span>
+                        <button id="btn-config-conv" class="btn btn-secondary btn-sm" disabled>⚙️ Convenciones</button>
+                        <button id="btn-add-employee" class="btn btn-secondary btn-sm" disabled>+ Agregar Colaborador</button>
+                    </div>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table id="shift-table" class="shift-table">
+                        <thead>
+                            <tr id="table-row-days">
+                                <!-- Days 1..31 generated here -->
+                            </tr>
+                            <tr id="table-row-weekdays">
+                                <!-- L M M J V S D generated here -->
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-employees">
+                            <!-- Rows for each employee -->
+                        </tbody>
+                        <tfoot id="table-foot-totals">
+                            <!-- Daily totals if needed, or summary -->
+                        </tfoot>
+                    </table>
+                    
+                    <div id="empty-state" class="empty-state">
+                        <div class="empty-icon">📊</div>
+                        <p>Seleccione un área o agregue colaboradores para iniciar la programación.</p>
+                    </div>
+                </div>
+                
+                <!-- Legend & Rules -->
+                <div class="legend-panel">
+                    <h3>Convenciones de esta Unidad <button id="btn-edit-legend" class="btn-icon" style="font-size: 1rem; margin-left: 10px;">✏️</button></h3>
+                    <div class="legend-items" id="legend-items-container">
+                        <!-- Legend items injected dynamically -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal Configuración Convenciones -->
+    <div id="modal-convenciones" class="modal-overlay hidden">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>Configurar Convenciones</h2>
+                <button id="btn-close-modal" class="btn-icon">×</button>
+            </div>
+            <div class="modal-body">
+                <table class="table-conv">
+                    <thead>
+                        <tr>
+                            <th>Turno</th>
+                            <th>Horas Totales</th>
+                            <th>Color</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-conv">
+                    </tbody>
+                </table>
+                <button id="btn-add-conv" class="btn btn-secondary btn-sm" style="margin-top: 1rem;">+ Añadir Turno</button>
+                <input type="file" id="file-input-conv" accept=".xlsx, .xls" style="display: none;">
+                <button id="btn-load-conv-excel" class="btn btn-secondary btn-sm" style="margin-top: 1rem; margin-left: 10px;">📥 Cargar Parámetros desde Excel</button>
+            </div>
+            <div class="modal-footer" style="margin-top: 1.5rem; text-align: right;">
+                <button id="btn-save-conv" class="btn btn-primary">Guardar Convenciones</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

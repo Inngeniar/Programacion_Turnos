@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Generador de Turnos</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        h2 {
+            color: #3b82f6;
+            margin-top: 30px;
+        }
+        .step-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #0f172a;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .btn-fake {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manual Rápido: Generador de Turnos</h1>
+        <p>Bienvenido al <strong>Generador de Turnos</strong> de Mundo Salud Médica. Esta herramienta está diseñada para que las Unidades Operativas planifiquen sus cuadros de turnos de manera rápida, automática y sin errores matemáticos.</p>
+
+        <h2>🚀 ¿Cómo empezar a usar la herramienta?</h2>
+        <div class="step-box">
+            <p><span class="highlight">Paso 1: Abrir la aplicación</span><br>
+            No necesitas instalar nada. Haz doble clic en el archivo llamado <strong>Generador_Turnos_Unidades.html</strong> y se abrirá en tu navegador web.</p>
+        </div>
+
+        <div class="step-box">
+            <p><span class="highlight">Paso 2: Datos de la Unidad</span><br>
+            Completa la información en la parte superior: Año, Mes, Unidad Operativa (Ej. Clínica Alcalá), y el nombre de los responsables.</p>
+        </div>
+
+        <div class="step-box">
+            <p><span class="highlight">Paso 3: Crear los Servicios y Colaboradores</span><br>
+            Usa el menú izquierdo para crear tus áreas (Ej. Urgencias, Consulta Externa). Luego, agrega a tus colaboradores y asigna las letras de los turnos (D, N, L, etc.) en el calendario de la derecha.</p>
+        </div>
+
+        <h2>🕵️ Tips de Uso</h2>
+        <ul>
+            <li><strong>Auto-cálculo:</strong> No te preocupes por sumar las horas a fin de mes. El sistema calcula automáticamente cuántas horas trabaja cada persona basándose en las letras que ingreses.</li>
+            <li><strong>Copiar y Pegar:</strong> Puedes seleccionar un turno, presionar <code>Ctrl+C</code> y luego pegarlo en otra celda con <code>Ctrl+V</code>.</li>
+            <li><strong>Guardar Progreso:</strong> Haz clic en <span class="btn-fake">💾 Guardar Local</span> para no perder tus avances si cierras la ventana. Puedes retomarlo después.</li>
+        </ul>
+
+        <h2>💾 Exportar el Archivo Oficial</h2>
+        <div class="step-box">
+            <p><span class="highlight">Exportar a Excel</span><br>
+            Una vez que todos los turnos estén listos y completos, haz clic en el botón azul <span class="btn-fake">📊 Exportar a Excel</span>. La herramienta descargará el archivo oficial con el formato estándar exigido por el DOE. ¡Ese es el archivo que debes enviarles para su evaluación!</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: #64748b; font-size: 0.9em;">
+            <p>Mundo Salud Médica © 2026</p>
+        </div>
+    </div>
+</body>
+</html>
