@@ -118,11 +118,12 @@ No se requiere instalación de servidores, compiladores ni dependencias externas
 
 ---
 
-## 📖 Manuales de Usuario y Documentación
+## 📖 Manuales de Usuario y Guía de Despliegue
 
-- **Manual Generador de Unidades**: Consulta [`app_unidad/Manual_Usuario_Unidades.html`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/app_unidad/Manual_Usuario_Unidades.html)
-- **Manual Consola DOE**: Consulta [`app_doe/Manual_Usuario_DOE.html`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/app_doe/Manual_Usuario_DOE.html)
-- **Circular 010-2026**: Revisa las normativas en la carpeta [`docs/`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/docs/)
+- **📘 Guía de Instalación y Despliegue**: Consulta [`INSTRUCCIONES_DESPLIEGUE_E_INSTALACION.md`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/INSTRUCCIONES_DESPLIEGUE_E_INSTALACION.md)
+- **🏥 Manual Programador de Unidades**: Consulta [`app_unidad/Manual_Usuario_Unidades.html`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/app_unidad/Manual_Usuario_Unidades.html)
+- **🛡️ Manual Consola DOE (Auditoría)**: Consulta [`app_doe/Manual_Usuario_DOE.html`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/app_doe/Manual_Usuario_DOE.html)
+- **📋 Circular Normativa 010-2026**: Revisa los lineamientos en la carpeta [`docs/`](file:///c:/Users/nicol/OneDrive/Mundo%20Salud%20M%C3%A9dica/PROYECTO%20MSM/Programacion_Turnos/docs/)
 
 ---
 

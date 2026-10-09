@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Programación de Turnos Unidades</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        h2 {
+            color: #1e293b;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .step-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .step-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .btn-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #2563eb;
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-demo-sec {
+            background: #ffffff;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+        }
+
+        .badge-demo {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .badge-demo.oculta { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+        .badge-demo.copia { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+
+        .callout {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+            color: #1e40af;
+        }
+
+        .callout-warning {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+            color: #92400e;
+        }
+
+        table.conv-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        table.conv-table th, table.conv-table td {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        table.conv-table th {
+            background: #f1f5f9;
+            font-weight: 700;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1.25rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <span class="badge-tag">Manual de Usuario Oficial</span>
+            <h1>🏥 Programador de Turnos — Unidades Operativas</h1>
+            <p class="subtitle">Guía de operación para coordinadores de servicio y jefes de Unidad Operativa en Mundo Salud Médica.</p>
+        </div>
+
+        <h2>🚀 1. Puesta en Marcha (Sin Instalación)</h2>
+        <p>El aplicativo opera directamente en tu navegador web (Google Chrome, Microsoft Edge, Mozilla Firefox o Safari). No requiere instalación de programas adicionales ni conexión a servidores externos.</p>
+        <div class="step-box">
+            <div class="step-title"><span>📂</span> Paso 1: Abrir la Aplicación</div>
+            <p>Haz doble clic en el archivo <strong><code>Generador_Turnos_Unidades.html</code></strong> de la carpeta de la herramienta o accede a la dirección interna compartida por tu institución.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span>🗓️</span> Paso 2: Seleccionar Año, Mes y Unidad</div>
+            <p>En el panel superior selecciona el <strong>Año</strong>, el <strong>Mes</strong> a programar y digita el nombre de tu <strong>Unidad Operativa</strong> (ej. <em>HSJD</em>, <em>Clinica Alcala</em>) y el nombre del Responsable.</p>
+        </div>
+
+        <h2>📥 2. Carga e Importación de Archivos Excel (.xlsx)</h2>
+        <p>Puedes iniciar desde cero o importar un archivo de cuadros previos enviados en Excel:</p>
+        <ul>
+            <li>Haz clic en el botón <span class="btn-demo btn-demo-sec">🔍 Importar Excel</span> y selecciona el archivo <code>.xlsx</code> de tu unidad.</li>
+            <li><strong>Identificación Automática de Hojas:</strong> La herramienta leerá las pestañas del archivo y las organizará en el panel lateral.</li>
+            <li><strong>Insignias Visuales de Hojas:</strong>
+                <ul>
+                    <li><span class="badge-demo copia">📋 Copia / Borrador</span>: Identifica pestañas secundarias o borradores (ej. <code>CONS EXTERNA (2)</code>).</li>
+                    <li><span class="badge-demo oculta">🔒 Oculta</span>: Identifica pestañas que estaban ocultas en Excel.</li>
+                    <li><strong>Pestaña Oficial:</strong> La hoja visible y vigente (ej. <code>CONSULTA EXTERNA</code>) aparecerá como la principal del servicio.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>✍️ 3. Asignación de Turnos y Convenciones Horarias</h2>
+        <p>Haz clic en cualquier servicio del panel lateral para abrir su matriz de colaboradores. Para asignar turnos:</p>
+        <table class="conv-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Jornada / Tipo</th>
+                    <th>Horas Computadas</th>
+                    <th>Descripción Normativa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>D</strong></td>
+                    <td>Día</td>
+                    <td>12 hrs</td>
+                    <td>Jornada diurna de 07:00 a 19:00</td>
+                </tr>
+                <tr>
+                    <td><strong>N</strong></td>
+                    <td>Noche</td>
+                    <td>12 hrs</td>
+                    <td>Jornada nocturna de 19:00 a 07:00</td>
+                </tr>
+                <tr>
+                    <td><strong>M</strong></td>
+                    <td>Mañana</td>
+                    <td>6 hrs</td>
+                    <td>Jornada diurna de 07:00 a 13:00</td>
+                </tr>
+                <tr>
+                    <td><strong>T</strong></td>
+                    <td>Tarde</td>
+                    <td>6 hrs</td>
+                    <td>Jornada vespertina de 13:00 a 19:00</td>
+                </tr>
+                <tr>
+                    <td><strong>L / DSO</strong></td>
+                    <td>Descanso</td>
+                    <td>0 hrs</td>
+                    <td>Día de descanso intercalado o libre legal</td>
+                </tr>
+                <tr>
+                    <td><strong>VAC / INC / LIC</strong></td>
+                    <td>Novedades</td>
+                    <td>0 hrs</td>
+                    <td>Vacaciones, Incapacidades o Licencias legales</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <strong>💡 Truco de Agilidad (Copiar y Pegar):</strong> Puedes seleccionar una celda o grupo de turnos, presionar <code>Ctrl+C</code> para copiar y <code>Ctrl+V</code> para pegar en otros colaboradores o días.
+        </div>
+
+        <h2>⏱️ 4. Control de Metas Horarias en Tiempo Real</h2>
+        <p>En la barra superior de la grilla de turnos se muestra en tiempo real la <strong>Meta Horaria del Mes</strong> (ej. <em>Meta Mes: 168h — 167h Op + 1h CAP</em>).</p>
+        <ul>
+            <li>Cada celda recalcula al instante el total de horas trabajadas por cada colaborador.</li>
+            <li>Si un colaborador supera o no alcanza la meta mensual, la celda de total resaltará su estado para permitirte ajustar la programación antes de enviarla.</li>
+        </ul>
+
+        <h2>💾 5. Guardado Local y Descarga de Resguardos (.json)</h2>
+        <p>Para no perder tu avance si debes pausar la programación o cambiar de equipo:</p>
+        <div class="step-box">
+            <div class="step-title"><span>💾</span> Guardar en Memoria del Navegador</div>
+            <p>Al hacer clic en <span class="btn-demo btn-demo-sec">💾 Guardar</span>, la aplicación almacena automáticamente todo tu avance en la memoria del navegador. Si cierras la ventana y vuelves a abrirla en el mismo equipo, tu cuadro se restaurará sólo.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span>📥</span> Descargar Copia de Resguardo (.json)</div>
+            <p>La herramienta te ofrecerá descargar un archivo de resguardo físico (ej. <code>Resguardo_Auditoria_HSJD_Septiembre_2026.json</code>). Guárdalo en tu disco duro o envíalo por correo. Para retomar tu sesión en cualquier otra computadora, usa el botón <span class="btn-demo btn-demo-sec">📂 Cargar Progreso</span>.</p>
+        </div>
+
+        <h2>📊 6. Exportación Oficial a Excel para la Evaluación DOE</h2>
+        <p>Cuando la programación de todos los servicios esté completa y verificada:</p>
+        <ol>
+            <li>Haz clic en el botón azul <span class="btn-demo">📊 Exportar Excel</span>.</li>
+            <li>La aplicación generará y descargará automáticamente el libro Excel oficial de la unidad (<code>.xlsx</code>) formateado con estilos institucionales, firmas y resúmenes de horas.</li>
+            <li>Envía este archivo Excel a la <strong>Dirección de Operaciones y Enfermería (DOE)</strong> para su correspondiente proceso de auditoría y aprobación.</li>
+        </ol>
+
+        <div class="callout callout-warning">
+            <strong>⚠️ Recordatorio Importante:</strong> Antes de exportar a Excel, asegúrate de haber revisado que ningún colaborador tenga más de 6 días de trabajo consecutivo sin descanso intercalado.
+        </div>
+
+        <div class="footer">
+            <p><strong>Mundo Salud Médica © 2026</strong> — Plataforma Institucional de Programación de Turnos</p>
+        </div>
+    </div>
+
+</body>
+</html>

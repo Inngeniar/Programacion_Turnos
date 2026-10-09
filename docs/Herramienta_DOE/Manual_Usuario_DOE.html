@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Consola DOE Auditoría</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        h2 {
+            color: #1e293b;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .step-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .step-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .btn-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #2563eb;
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-demo-green { background: #16a34a; }
+        .btn-demo-red { background: #dc2626; }
+        .btn-demo-sec { background: #ffffff; color: #1e293b; border: 1px solid #cbd5e1; }
+
+        .badge-demo {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .badge-demo.oculta { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+        .badge-demo.copia { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+        .badge-demo.critica { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .badge-demo.advertencia { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+
+        .callout {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+            color: #1e40af;
+        }
+
+        .callout-warning {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1.25rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <span class="badge-tag">Manual de Auditoría DOE</span>
+            <h1>🛡️ Consola DOE — Dirección de Operaciones y Enfermería</h1>
+            <p class="subtitle">Guía de usuario para auditores de enfermería y evaluadores institucionales en Mundo Salud Médica.</p>
+        </div>
+
+        <h2>🚀 1. Puesta en Marcha (Sin Instalación)</h2>
+        <p>La Consola DOE opera localmente en cualquier navegador web moderno (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari). No requiere servidores externos ni bases de datos complejas.</p>
+        <div class="step-box">
+            <div class="step-title"><span>📂</span> Paso 1: Abrir la Consola DOE</div>
+            <p>Haz doble clic en el archivo <strong><code>Consola_DOE.html</code></strong> de la carpeta del sistema para iniciar la plataforma de auditoría.</p>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span>👤</span> Paso 2: Registrar Datos del Evaluador</div>
+            <p>En la barra superior selecciona el <strong>Año</strong>, el <strong>Mes</strong> a auditar y digita tu nombre en el campo <strong>Evaluador DOE</strong>.</p>
+        </div>
+
+        <h2>📥 2. Carga Masiva de Archivos Excel (.xlsx)</h2>
+        <p>Para auditar uno o varios cuadros de turno enviados por las Unidades Operativas:</p>
+        <ul>
+            <li>Haz clic en el botón <span class="btn-demo btn-demo-sec">🔍 Importar Excel</span> y selecciona el archivo <code>.xlsx</code> recibido.</li>
+            <li><strong>Acumulación Multi-Hospital:</strong> Si estás auditando varios hospitales (ej. <em>HSJD</em>, <em>HSVP</em>, <em>HMB</em>), impórtalos sucesivamente <strong>sin limpiar la pantalla</strong>. Todos los hospitales se agruparán en el panel lateral.</li>
+            <li><strong>Identificación de Hojas Ocultas y Copias:</strong>
+                <ul>
+                    <li><span class="badge-demo copia">📋 Copia / Borrador</span>: Señala pestañas duplicadas o borradores (ej. <code>CONS EXTERNA (2)</code>).</li>
+                    <li><span class="badge-demo oculta">🔒 Oculta</span>: Señala pestañas ocultas en la plantilla original.</li>
+                    <li><strong>Pestaña Oficial:</strong> La hoja visible y limpia de 2026 (ej. <code>CONSULTA EXTERNA</code>) tomará el puesto principal del servicio.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>🤖 3. Motor de Auditoría Automática (Circular 010-2026)</h2>
+        <p>Haz clic en el botón <span class="btn-demo">⚖️ Ver Desviaciones / Reporte</span> para abrir el panel de inteligencia normativa. El sistema realiza las siguientes validaciones automáticas:</p>
+
+        <div class="step-box">
+            <div class="step-title"><span>⚠️</span> Límite Ergonómico de 6 Días Consecutivos Trabajados</div>
+            <p>Identifica cuando un colaborador labora 9 o más días asistenciales seguidos sin descanso (L / Dominical / Novedad). El sistema especifica la secuencia exacta: <em style="color:#dc2626; font-weight:bold;">(Días 18 a 26)</em> e indica la acción correctiva sugerida.</p>
+        </div>
+
+        <div class="step-box">
+            <div class="step-title"><span>⚖️</span> Iniquidad en Turnos Nocturnos</div>
+            <p>Calcula el equilibrio de turnos de trasnocho (N) entre colaboradores del mismo servicio, alertando si la brecha supera el margen permitido.</p>
+        </div>
+
+        <div class="step-box">
+            <div class="step-title"><span>📊</span> Puntaje de Calidad /100 y Dictamen IA</div>
+            <p>Asigna un score numérico y un dictamen global (ej. <em>PAGO SEGURO / APTO PARA NOMINA</em> vs <em>CON RIESGO LEGAL / REVISIÓN REQUERIDA</em>) clasificando cada observación como <span class="badge-demo critica">CRÍTICA</span> o <span class="badge-demo advertencia">ADVERTENCIA</span>.</p>
+        </div>
+
+        <h2>✅ 4. Dictamen de Evaluación por Servicio</h2>
+        <p>Para cada servicio en la barra lateral el auditor puede emitir un concepto:</p>
+        <ul>
+            <li><span class="btn-demo btn-demo-green">✅ Aprobar Servicio</span>: Marca el cuadro como válido para la liquidación de nómina.</li>
+            <li><span class="btn-demo btn-demo-red">🔴 Rechazar Servicio</span>: Abre el cuadro para redactar los motivos de rechazo y las acciones correctivas obligatorias.</li>
+            <li><span class="btn-demo btn-demo-sec">📝 Anotaciones del Evaluador</span>: Permite registrar aspectos a mejorar sin rechazar el servicio.</li>
+        </ul>
+
+        <h2>💾 5. Pausar y Restaurar Sesiones de Auditoría (.json)</h2>
+        <p>Si debes suspender la auditoría para continuar en otro momento:</p>
+        <ul>
+            <li>Haz clic en <span class="btn-demo btn-demo-sec">💾 Guardar</span>. La herramienta guardará la sesión en la memoria del navegador y te ofrecerá descargar una copia física (ej. <code>Resguardo_Auditoria_DOE_HSJD_Septiembre_2026.json</code>).</li>
+            <li><strong>Restauración Integral:</strong> Al hacer clic en <span class="btn-demo btn-demo-sec">📂 Cargar Progreso</span> y seleccionar el archivo <code>.json</code>, la herramienta restaurará al 100% todos los dictámenes (🟢 Aprobado, 🔴 Rechazado), las notas del evaluador y la lista de observaciones.</li>
+        </ul>
+
+        <h2>📊 6. Exportación Consolidada y Reporte de Rechazos</h2>
+        <p>Al concluir la evaluación:</p>
+        <ol>
+            <li>Haz clic en <span class="btn-demo">📊 Exportar Aprobados</span>.</li>
+            <li>La Consola DOE generará un único archivo Excel consolidado oficial que contiene:
+                <ul>
+                    <li>Únicamente las pestañas de los servicios <strong>Aprobados</strong>.</li>
+                    <li>La firma digital del Evaluador DOE.</li>
+                    <li>Una pestaña especial denominada <code>"RECHAZOS_Y_OBSERVACIONES"</code> que resume detalladamente los servicios rechazados y los motivos para que la Unidad Operativa los corrija.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <div class="footer">
+            <p><strong>Mundo Salud Médica © 2026</strong> — Dirección de Operaciones y Enfermería (DOE)</p>
+        </div>
+    </div>
+
+</body>
+</html>
