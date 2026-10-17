@@ -175,6 +175,11 @@
             color: white;
         }
 
+        .card-icon.calidad {
+            background: linear-gradient(135deg, #0284c7 0%, #011c4e 100%);
+            color: white;
+        }
+
         .card-title-group h2 {
             font-size: 1.4rem;
             font-weight: 700;
@@ -200,6 +205,11 @@
         .badge-doe {
             background: #f3e8ff;
             color: #6b21a8;
+        }
+
+        .badge-calidad {
+            background: #e0f2fe;
+            color: #0369a1;
         }
 
         .card-description {
@@ -284,6 +294,18 @@
             background: #7c3aed;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+        }
+
+        .btn-emerald {
+            background: #059669;
+            color: white;
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+        }
+
+        .btn-emerald:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.45);
         }
 
         .btn-secondary {
@@ -514,6 +536,37 @@
                     </a>
                     <a href="app_doe/Manual_Usuario_DOE.html" class="btn btn-secondary">
                         <span>📖 Manual de Usuario (DOE)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- APP SEGUIMIENTO DE TAREAS UO (CALIDAD & SIG) -->
+            <div class="glass-panel app-card">
+                <div class="card-header">
+                    <div class="card-icon calidad">📊</div>
+                    <div class="card-title-group">
+                        <span class="badge badge-calidad">Calidad & SIG</span>
+                        <h2>Seguimiento Tareas UO</h2>
+                    </div>
+                </div>
+
+                <p class="card-description">
+                    Módulo gerencial para la auditoría y cumplimiento de compromisos operativos en procesos de facturación en salud en las 13 sedes (Formato DOE-FT-001).
+                </p>
+
+                <ul class="card-features">
+                    <li>Dashboard Ejecutivo con KPIs de Eficacia (81.5%) y Oportunidad SLA en vivo</li>
+                    <li>Filtros dinámicos sincronizados por Sede, Perfil, Mes y Año</li>
+                    <li>Sincronización colaborativa en la nube multi-sede en tiempo real (Supabase)</li>
+                    <li>Descarga de informe oficial en Excel con fórmulas y semáforos activos</li>
+                </ul>
+
+                <div class="card-actions">
+                    <a href="https://msm-seguimiento-tareas.vercel.app" target="_blank" class="btn btn-emerald">
+                        <span>🚀 Abrir App Oficial (Vercel)</span>
+                    </a>
+                    <a href="../Calidad/Seguimiento_Tareas/MundoSalud_Seguimiento_Tareas_App.html" target="_blank" class="btn btn-secondary">
+                        <span>💻 Versión Local / Portátil</span>
                     </a>
                 </div>
             </div>
